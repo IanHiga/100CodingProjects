@@ -23,15 +23,65 @@
 
     <!-- Page Body -->
     
-    <button type="button" onclick="test()">Give it a go!</button>
-    <p id="test">Hopefully... </p>
+    <button type="button" onclick="generateName()">Generate Name</button>
+    <div id="test"></div>
 
     <script>
-        function test() {
-            fetch("Input.txt")
+        function generateName() {
+            /* Determine Random Syllable Count */
+            let first = Math.floor(Math.random() * 4) + 1;
+            let last = Math.floor(Math.random() * 4) + 1;
+
+            /* Read syllables and generate name */
+            fetch("data/01namegen/syllables.txt")
                 .then((res) => res.text())
                 .then((text) => {
-                    document.getElementById("test").innerHTML = text;
+                    let pre = text;
+                    let arr = pre.split("\n");
+                    let firstname = "";
+                    let lastname = "";
+                    let nameText = document.getElementById("test");
+
+                    /* Clear Prev. Name */
+                    while(nameText.firstChild) {
+                        nameText.removeChild(nameText.lastChild);
+                    }
+
+                    /* Generate First Name */
+                    for(i = 0; i < first; i++){
+                        let rand = Math.floor(Math.random() * arr.length);
+                        if(i == 0){
+                            let temp = arr[rand][0].toUpperCase() + arr[rand].slice(1);
+                            firstname += temp;
+                        }
+                        else{
+                            firstname += arr[rand];
+                        }
+                    }
+                    
+                    let newContent = document.createTextNode(firstname.replace(/\s+/g, ''));
+                    nameText.appendChild(newContent);
+                    console.log(firstname);
+
+                    /* Add Space in between */
+                    let addSpace = document.createTextNode(" ");
+                    nameText.appendChild(addSpace); 
+
+                    /* Generate Last Name */
+                    for(i = 0; i < last; i++){
+                        let rand = Math.floor(Math.random() * arr.length);
+                        if(i == 0){
+                            let temp = arr[rand][0].toUpperCase() + arr[rand].slice(1);
+                            lastname += temp;
+                        }
+                        else{
+                            lastname += arr[rand];
+                        }
+                    }
+                    newContent = document.createTextNode(lastname.replace(/\s+/g, ''));
+                    nameText.appendChild(newContent);
+
+
                 })
                 .catch((e) => console.error(e));
         }
