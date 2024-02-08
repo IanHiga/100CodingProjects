@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="01style.css" />
+    <title>01 - Name Generator</title>
+</head>
+
+<body>
+    <!-- Page Header -->
+    <div class="barrier"> </div>
+
+    <!-- Back Button -->
+
+    <div>
+        <div class="backButton">
+            <a href="home.html">Home</a>
+        </div>
+        <h1 class="pageHeader">01 - Name Generator</h1>
+    </div>
+
+
+    <div class="barrier"> </div>
+
+    <!-- Page Body -->
+    
+    <button type="button" onclick="test()">Give it a go!</button>
+    <p id="test">Hopefully... </p>
+
+    <script>
+        function test() {
+            fetch("Input.txt")
+                .then((res) => res.text())
+                .then((text) => {
+                    document.getElementById("test").innerHTML = text;
+                })
+                .catch((e) => console.error(e));
+        }
+    </script>
+
+
+</body>
+</html>
