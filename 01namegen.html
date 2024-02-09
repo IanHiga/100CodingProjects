@@ -23,14 +23,57 @@
 
     <!-- Page Body -->
     
-    <button type="button" onclick="generateName()">Generate Name</button>
-    <div id="test"></div>
+    <div class="formElements">
+        <form action="/action_page.php">
+            <label for="firstLen">Number of First Name Syllables:</label>
+            <select name="firstLength" id="firstLen" onchange="formChanged()" style="width: 150px; height: 30px; font-size:20px">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>Random</option>
+            </select>
+            <label for="lastLen">Number of Last Name Syllables:</label>
+            <select name="lastLength" id="lastLen" onchange="formChanged()" style="width: 150px; height: 30px; font-size:20px">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>Random</option>
+            </select>
+        </form>
+        <button type="button" onclick="generateName()" style="width: 150px; height: 30px; font-size:20px; width: 90%; margin-left: 5%">Generate Name</button>
+        <p id="test">Name</p>
+    </div>
+
+    <div class="barrier"> </div>
+
+    <div class="footer">
+        <p>Developed by Ian Higa.<br>Feburary 7, 2024 - Feburary 7, 2024</p>
+    </div>
+
 
     <script>
+        var fNameLength = 1;
+        var lNameLength = 1;
+
+        function formChanged(){
+            fNameLength = document.getElementsByName("firstLength")[0].value;
+            lNameLength = document.getElementsByName("lastLength")[0].value;
+        }
         function generateName() {
-            /* Determine Random Syllable Count */
-            let first = Math.floor(Math.random() * 4) + 1;
-            let last = Math.floor(Math.random() * 4) + 1;
+            var first = fNameLength;
+            var last = lNameLength;
+
+            if(fNameLength == 6){
+                first = Math.floor(Math.random() * 4) + 1;
+            }
+            if(lNameLength == 6){
+                last = Math.floor(Math.random() * 4) + 1;
+            }
+
 
             /* Read syllables and generate name */
             fetch("data/01namegen/syllables.txt")

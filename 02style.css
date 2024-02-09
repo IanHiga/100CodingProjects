@@ -24,26 +24,22 @@ div.backButton a:link, a:visited {
     text-decoration: none;
     color: black;
     position: absolute;
-    width: 5%;
-    height: 5%;
+    width: 4%;
+    height: 3%;
     margin: auto;
-    margin-left: 6%;
-    margin-top: 2px;
+    margin-left: 5%;
+    margin-top: 5px;
     background-color: lightgray;
     border: 1px solid black;
     border-radius: 5px;
-    padding: 10px 0px 5px 0px;
+    padding: 5px 0px 5px 0px;
 }
 
 div.backButton a:hover, a:active {
     background-color: white;
 }
 
-/* === BODY OBJECTS === */
-
-/* Home Gallery */
-
-
+/* Barrier */
 div.barrier {
     display: inline-block;
     background-color: black;
@@ -56,51 +52,20 @@ div.barrier {
     overflow: hidden;
 }
 
-div.gallery {
-    border: 1px solid #ccc;
-}
-
-div.gallery:hover {
-    border: 1px solid #777;
-}
-
-div.gallery img {
-    width: 100%;
+div.footer{
+    display: block;
+    width: 30%;
     height: auto;
-}
-
-div.desc {
-    padding: 15px;
     text-align: center;
-    font-family: "Courier New", 'Times New Roman', snas-serif;
-    border: 2px solid lightblue;
+    margin: auto;
+    color: gray;
+    background-color: #dddddd;
 }
 
-* {
-    box-sizing: border-box;
-}
-
-.responsive {
-    padding: 0 6px;
-    float: left;
-    width: 24.99999%;
-}
-
-@media only screen and (max-width: 700px) {
-    .responsive {
-        width: 49.99999%;
-        margin: 6px 0;
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    .responsive {
-        width: 100%;
-    }
-}
-
-.clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
+.counter {
+    display: inline-block;
+    border: 2px solid lightgray;
+    margin: auto;
+    text-align: center;
+    font-size: 200%;
 }

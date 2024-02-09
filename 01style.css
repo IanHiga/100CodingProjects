@@ -51,3 +51,31 @@ div.barrier {
     margin-bottom: 10px;
     overflow: hidden;
 }
+
+div.footer{
+    display: block;
+    width: 30%;
+    height: auto;
+    text-align: center;
+    margin: auto;
+    color: gray;
+    background-color: #dddddd;
+}
+
+/* Page Elements */
+div.formElements {
+    display: block;
+    border: 5px solid lawngreen;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding: 50px 0px 50px 0px;
+    font-size: 250%;
+}
+
+#test {
+    display: block;
+    width: 100%;
+    text-align: center;
+}

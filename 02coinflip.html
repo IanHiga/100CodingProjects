@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="02style.css" />
+    <title>02 - Coinflip</title>
+</head>
+
+<body>
+    <!-- Page Header -->
+    <div class="barrier"> </div>
+
+    <!-- Back Button -->
+
+    <div>
+        <div class="backButton">
+            <a href="home.html">Home</a>
+        </div>
+        <h1 class="pageHeader">02 - Coinflip</h1>
+    </div>
+
+
+    <div class="barrier"> </div>
+
+    <!-- Page Body -->
+    <canvas id="coinWindow" width="600" height="300" style="border:1px solid black; display:block; margin:auto;"></canvas>
+    <button type="button" style="display: block; margin: auto; margin-top: 5px;" onclick="flipCoin()">Flip that coin!</button>
+    <div style="display: block; margin: auto; width: 30%; margin-top:10px; text-align: center;">
+        <p id="headCounter" class="counter">Heads: 0</p>
+        <p id="tailCounter" class="counter">Tails: 0</p>
+    </div>
+    <div style="display: block; margin: auto; width: 30%; margin-top: 10px; text-align: center;">
+        <p id="totalText" class="counter">Total: 0</p>
+    </div>
+    <div style="display: block; margin: auto; width: 30%; margin-top: 10px; text-align: center;">
+        <p id="ratioText" class="counter">Ratio: 50% / 50%</p>
+    </div>
+
+    <div class="barrier"> </div>
+
+    <div class="footer">
+        <p style="display:inline;">Developed by </p>
+        <a href="ianhiga.github.io/Portfolio/home.html " style="display:inline; color:gray;">Ian Higa</a>
+        <p>Feburary 8, 2024 - Feburary 8, 2024</p>
+    </div>
+
+    <script>
+        var coinStatus = "FLIP ME";
+        var headCount = 0;
+        var tailCount = 0;
+
+        var c = document.getElementById("coinWindow");
+        var ctx = c.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(c.width/2, c.height/2, 100, 0, 2 * Math.PI);
+        ctx.fillStyle = "lightgray";
+        ctx.stroke();
+        ctx.fill();
+
+        var coinText = c.getContext("2d");
+        coinText.font = "50px Arial";
+        coinText.textAlign = "center";
+        coinText.strokeText(coinStatus, c.width/2, c.height/2 + 15);
+
+        function redrawCoin(){
+            ctx.stroke();
+            ctx.fill();
+        }
+
+        function flipCoin(){
+            if(Math.random() * 2 <= 1){
+                coinStatus = "HEADS";
+                console.log("Heads");
+                headCount++;
+            }
+            else{
+                coinStatus = "TAILS";
+                console.log("Tails");
+                tailCount++;
+            }
+            coinText.clearRect(0,0,c.width,c.height);
+            redrawCoin();
+            coinText.strokeText(coinStatus, c.width/2, c.height/2 + 15);
+            addFlip();
+        }
+
+        function addFlip(){
+            if(coinStatus == "HEADS"){
+                document.getElementById("headCounter").innerHTML = "Heads: " + headCount;
+            }
+            else{
+                
+                document.getElementById("tailCounter").innerHTML = "Tails: " + tailCount;
+            }
+            var total = headCount + tailCount;
+            document.getElementById("totalText").innerHTML = "Total: " + total;
+
+            var headRatio = Math.floor(headCount / (total) * 100);
+            var tailRatio = 100 - headRatio;
+            document.getElementById("ratioText").innerHTML = "Ratio: " + headRatio + "% / " + tailRatio + "%";
+        }
+    </script>
+
+</body>
+</html>
