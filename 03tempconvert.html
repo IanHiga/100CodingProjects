@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="03style.css" />
+    <title>03 - Temperature Conversion</title>
+</head>
+
+<body>
+    <!-- Page Header -->
+    <div class="barrier"> </div>
+
+    <!-- Back Button -->
+
+    <div>
+        <div class="backButton">
+            <a href="home.html">Home</a>
+        </div>
+        <h1 class="pageHeader">03 - Temperature Conversion</h1>
+    </div>
+
+    <div class="barrier"> </div>
+
+    <!-- Page Body -->
+
+    <div class="inputBox">
+        <label for="tempC">Celsius: </label>
+        <input id="tempC" oninput="onTyped('tempC')">
+    </div>
+
+    <div class="inputBox">
+        <label for="tempF">Farenheit: </label>
+        <input id="tempF" oninput="onTyped('tempF')">
+    </div>
+
+    <div class="inputBox">
+        <label for="tempK">Kelvin: </label>
+        <input id="tempK" oninput="onTyped('tempK')">   
+    </div>
+
+
+
+
+    <!-- Footer -->
+
+     <div class="barrier"> </div>
+
+     <div class="footer">
+         <p style="display:inline;">Developed by </p>
+         <a href="https://ianhiga.github.io/Portfolio/home.html " style="display:inline; color:gray;">Ian Higa</a>
+         <p>Feburary 9, 2024 - February 9, 2024</p>
+     </div>
+
+     <script>
+        var valid = true;
+
+        function onTyped(textID){
+            var passed = true;
+            let temp = document.getElementById(textID).value.toString().split();
+            
+            /* Input Validation */
+            if(Number(temp)){
+                console.log("Number");
+                document.getElementById(textID).style.color = "black";
+            }
+            else if(Number(temp) == 0){
+                console.log("Number");
+                document.getElementById(textID).style.color = "black";
+            }
+            else{
+                console.log("not a number");
+                document.getElementById(textID).style.color = "red";
+                passed = false;
+            }
+
+            if(passed){
+                switch(textID){
+                    case 'tempC':
+                        document.getElementById("tempF").value = (Number(temp) * (9/5) + 32).toFixed(2);
+                        document.getElementById("tempK").value = (Number(temp) + 273.15).toFixed(2);
+                        break;
+                    case 'tempF':
+                        document.getElementById("tempC").value = ((Number(temp) - 32) * (5/9)).toFixed(2);
+                        document.getElementById("tempK").value = (((Number(temp) - 32) * (5/9)) + 273.15).toFixed(2);
+                        break;
+                    case 'tempK':
+                        document.getElementById("tempC").value = (((Number(temp) - 273.15) * (9/5)) + 32).toFixed(2);
+                        document.getElementById("tempF").value = (Number(temp) - 273.15).toFixed(2);
+                        break;
+                }
+            }
+        }
+     </script>
+</body>
+</html>
