@@ -34,8 +34,9 @@
     </div>
 
     <div id="answerBlock">
-        <p id="introText" class="answerText"></p>
-        <p id="timePassed" class="answerText"></p>
+        <p id="introText" class="answerText" style="display: none"></p>
+        <p id="timePassed" class="answerText" style="display: none"></p>
+        <p id="timePassed2" class="answerText" style="display: none"></p>
     </div>
 
     <!-- Footer -->
@@ -45,7 +46,7 @@
     <div class="footer">
         <p style="display:inline;">Developed by </p>
         <a href="https://ianhiga.github.io/Portfolio/home.html " style="display:inline; color:gray;">Ian Higa</a>
-        <p>February 12, 2024 - Ongoing</p>
+        <p>February 12, 2024 - February, 13, 2024</p>
     </div>
 
     <script>
@@ -216,6 +217,20 @@
             else{
                 document.getElementById("timePassed").innerHTML += tempDay + " Days old.";
             }
+
+            /* Time passed in years, months, days, hours, seconds */
+            document.getElementById("timePassed2").innerHTML = "Your life's length in different measurements: <br><br> " + ((tempYear + (tempMonth / 12) + (tempDay / 365)).toFixed(4)) + " Years<br>";
+            document.getElementById("timePassed2").innerHTML += ((tempYear * 12) + (tempMonth) + (tempDay / 31)).toFixed(4) + " Months<br>";
+
+            const tempDaysTotal = (tempYear * 365) + (tempMonth * 31) + (tempDay);
+            document.getElementById("timePassed2").innerHTML += tempDaysTotal.toLocaleString() + " Days<br>";
+            document.getElementById("timePassed2").innerHTML += (tempDaysTotal * 24).toLocaleString() + " Hours<br>";
+            document.getElementById("timePassed2").innerHTML += (tempDaysTotal * 1440).toLocaleString() + " Minutes<br>";
+            document.getElementById("timePassed2").innerHTML += (tempDaysTotal * 86400).toLocaleString() + " Seconds";
+
+            document.getElementById("introText").style.display = "block";
+            document.getElementById("timePassed").style.display = "block";
+            document.getElementById("timePassed2").style.display = "block";
         }
 
         function daysPassedInYear(today){

@@ -63,25 +63,12 @@ div.footer{
     background-color: #dddddd;
 }
 
-/* PAGE CONTENT */
-#inputBlock{
-    display: block;
-    margin: auto;
+/* Page Content */
+div.contentWindow{
+    border: 2px solid lightgreen;
+    padding: 5px 5px 5px 5px;
     width: 30%;
-}
-
-#answerBlock{
-    display: block;
     margin: auto;
-    width: 30%;
-}
-
-.answerText{
-    font-size: 120%;
+    margin-top: 20px;
     text-align: center;
-    background-color: lightgray;
-    border: 1px solid black;
-    border-radius: 20px;
-    padding: 10px;
-    box-shadow: 10px 5px 10px 0px;
 }

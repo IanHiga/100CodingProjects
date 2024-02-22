@@ -58,6 +58,8 @@ div.barrier {
 
 div.gallery {
     border: 1px solid #ccc;
+    box-shadow: 5px 3px 5px 0px #666666;
+    margin-top: 10px
 }
 
 div.gallery:hover {
@@ -67,6 +69,7 @@ div.gallery:hover {
 div.gallery img {
     width: 100%;
     height: auto;
+    border: 1px solid darkgrey;
 }
 
 div.desc {
